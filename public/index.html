@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Editeur Lang SWF</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<aside id="sidebar">
+  <header>
+    <h1 id="sidebarTitle">SWF Lang</h1>
+    <div class="lang-row" id="langRow"></div>
+    <input type="search" id="filterInput" />
+  </header>
+  <ul id="typeList"></ul>
+  <div id="langDirConfig"></div>
+  <footer id="sidebarFooter"></footer>
+</aside>
+<main id="main">
+  <header id="topbar">
+    <div id="fileInfo"></div>
+    <div class="actions">
+      <div class="ui-lang-flags" id="uiLangFlags"></div>
+      <a href="/doc.html" class="btn-link" id="docBtn"></a>
+      <button id="modeBtn" disabled></button>
+      <button id="reloadBtn" disabled></button>
+      <button id="saveBtn" disabled></button>
+    </div>
+  </header>
+  <section id="status"></section>
+  <section id="editor">
+    <div id="rawWrap" class="hidden">
+      <textarea id="rawArea" spellcheck="false"></textarea>
+    </div>
+    <div id="formWrap" class="hidden">
+      <div id="formRoot"></div>
+    </div>
+    <div id="emptyState"></div>
+  </section>
+</main>
+<div id="modalOverlay" class="modal-overlay hidden">
+  <div class="modal" id="langDirModal"></div>
+</div>
+<script src="/i18n.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
