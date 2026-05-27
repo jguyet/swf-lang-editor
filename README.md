@@ -3,6 +3,12 @@
 Editeur visuel pour les fichiers `lang/*.swf` de Dofus 1.29 (AS2).
 **100 % JavaScript**, aucune dependance externe : pas de Java, pas de FFDec, pas de toolchain Flash.
 
+![Mode brut — source AS2](screenshots/raw-mode.png)
+
+![Mode formulaire — edition visuelle avec recherche et champs optionnels](screenshots/form-mode.png)
+
+![Documentation technique integree](screenshots/doc.png)
+
 ---
 
 ## Installation — macOS
