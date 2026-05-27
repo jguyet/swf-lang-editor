@@ -1,7 +1,8 @@
 {
-  "name": "dofus-swf-lang-editor",
+  "name": "lang-swf-editor",
   "version": "1.0.0",
-  "private": true,
+  "description": "Editeur visuel pour les fichiers lang/*.swf de Dofus 1.29 (AS2). 100% JavaScript, aucune dependance externe.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "start": "node server.js"

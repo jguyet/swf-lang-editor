@@ -12,7 +12,7 @@ import { LABELS_ES } from './lib/labels-es.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CONFIG_PATH = path.join(__dirname, '.config.json');
 const CACHE_DIR = path.resolve(__dirname, '.cache');
-const PORT = 8801;
+const PORT = process.env.PORT || 8801;
 
 /* -------------------------------------------------- config */
 
