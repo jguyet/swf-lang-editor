@@ -169,7 +169,8 @@
   function initPage() {
     document.title = i18n.t('doc.title');
     document.getElementById('backLink').textContent = i18n.t('doc.backToEditor');
-    document.getElementById('loading').textContent = i18n.t('doc.loading');
+    const loadingEl = document.getElementById('loading');
+    if (loadingEl) loadingEl.textContent = i18n.t('doc.loading');
     renderDocFlags();
   }
 
@@ -183,7 +184,12 @@
       if (lang === i18n.getLang()) btn.classList.add('active');
       btn.onclick = () => {
         i18n.setLang(lang);
-        initPage();
+        setTimeout(() => {
+          document.title = i18n.t('doc.title');
+          document.getElementById('backLink').textContent = i18n.t('doc.backToEditor');
+          renderDocFlags();
+          loadDoc();
+        }, 0);
       };
       container.appendChild(btn);
     }
@@ -191,7 +197,7 @@
 
   async function loadDoc() {
     try {
-      const res = await fetch('/api/doc');
+      const res = await fetch('/api/doc?lang=' + i18n.getLang());
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
 
@@ -205,6 +211,7 @@
       document.getElementById('docContent').innerHTML = html;
 
       const nav = document.getElementById('docNav');
+      nav.innerHTML = '';
       const headers = document.querySelectorAll('#docContent h2');
       headers.forEach((h, i) => {
         if (!h.id) h.id = 'doc-section-' + i;

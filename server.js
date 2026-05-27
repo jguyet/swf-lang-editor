@@ -159,8 +159,14 @@ app.post('/api/config/favorite/remove', (req, res) => {
 
 app.get('/api/doc', (req, res) => {
   try {
-    const mdPath = path.join(__dirname, 'public', 'doc-content.md');
-    if (!fs.existsSync(mdPath)) return res.status(404).json({ error: 'doc not found' });
+    const lang = req.query.lang || 'fr';
+    const candidates = [
+      path.join(__dirname, 'public', `doc-content-${lang}.md`),
+      path.join(__dirname, 'public', 'doc-content-fr.md'),
+      path.join(__dirname, 'public', 'doc-content.md'),
+    ];
+    const mdPath = candidates.find(p => fs.existsSync(p));
+    if (!mdPath) return res.status(404).json({ error: 'doc not found' });
     const md = fs.readFileSync(mdPath, 'utf8');
     res.json({ markdown: md });
   } catch (e) {
